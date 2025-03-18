@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 //选择排序(升序)
@@ -86,6 +88,7 @@ void quicksort(int a[], int t)
     _quicksort(a, 0, t);
 }
 
+//基数排序
 void counting_sort(vector<int>& arr, int exp) {
   int n = arr.size();
   vector<int> output(n);
