@@ -86,6 +86,41 @@ void quicksort(int a[], int t)
     _quicksort(a, 0, t);
 }
 
+void counting_sort(vector<int>& arr, int exp) {
+  int n = arr.size();
+  vector<int> output(n);
+  int count[10] = {0};
+  
+  // 统计出现次数
+  for (int i = 0; i < n; i++) {
+      int index = (arr[i] / exp) % 10;
+      count[index]++;
+  }
+  
+  // 计算前缀和，确定每个元素的位置
+  for (int i = 1; i < 10; i++) {
+      count[i] += count[i - 1];
+  }
+  
+  // 逆序遍历原数组，稳定排序
+  for (int i = n - 1; i >= 0; i--) {
+      int index = (arr[i] / exp) % 10;
+      output[count[index] - 1] = arr[i];
+      count[index]--;
+  }
+  
+  // 复制回原数组
+  for (int i = 0; i < n; i++) {
+      arr[i] = output[i];
+  }
+}
+
+void radix_sort(vector<int>& arr) {
+  int max_num = *max_element(arr.begin(), arr.end());
+  for (int exp = 1; max_num / exp > 0; exp *= 10) {
+      counting_sort(arr, exp);
+  }
+}
 int main()
 {
   return 0;
