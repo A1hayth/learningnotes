@@ -115,14 +115,13 @@ std::string md5(const std::string &input)
             // b = b + ((a + F_val + M[g] + T[i]) 循环左移 s[i] 位)
             b = b + leftRotate(a + F_val + M[g] + T[i], s[i]);
 
-            a = temp;
-
-            // 处理完当前数据块后，将本块的结果累加到初始状态中
-            A += a;
-            B += b;
-            C += c;
-            D += d;
+            a = temp; 
         }
+        // 处理完当前数据块后，将本块的结果累加到初始状态中
+        A += a;
+        B += b;
+        C += c;
+        D += d;
     }
     // 将最终的 A, B, C, D（4 个 32 位数）合并成 128 位哈希值，按小端顺序转换为 32 个十六进制字符
     std::ostringstream oss;
