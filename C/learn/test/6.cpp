@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// 快速幂计算 a^b mod p
+
 int mod_pow(int a, int b, int p) {
     int result = 1;
     a = a % p;
@@ -15,7 +15,7 @@ int mod_pow(int a, int b, int p) {
     return result;
 }
 
-// 勒让德符号计算函数
+
 int legendre_symbol(int a, int p) {
     if (a % p == 0) return 0;
     int res = mod_pow(a, (p - 1) / 2, p);
